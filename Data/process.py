@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv("/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/master.csv")
-col_country = ['country', 'year', 'suicides_no', 'population', 'suicides/100k pop',
+col_country = ['country', 'year', 'suicides_no', 'population', 'suicides_calc',
  'gdp', 'gdp_per_capita']
 
 year = [y for y in range(1991, 2011)]
