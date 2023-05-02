@@ -1,12 +1,12 @@
 import React from "react";
-import { min, max, median, quantile, interpolateOrRd, mean , timeFormat, timeParse} from "d3";
+import { min, max, median, interpolateOrRd} from "d3";
 import { Cell } from "./cell"
 import { Scales } from "./scale";
 import { Legend } from "./legend";
 
 
 export function HeatMap(props) {
-    const{margin, height, width, data, year_lst, country, selectedCountry, setSelectedCountry, selectedRow} = props;
+    const{margin, height, width, data, year_lst, country, selectedCountry, setSelectedCountry} = props;
 
     const xScale = Scales.band(year_lst, 0, width);
     const yScale = Scales.band(country, 0, height);
@@ -24,7 +24,7 @@ export function HeatMap(props) {
         if  (!selectedCountry) {
             return 1
         } else {
-            return (selectedCountry.country === thisPoint) ? 1 : 0.4  
+            return (selectedCountry.country === thisPoint) ? 1 : 0.4
         } 
     };
 
@@ -59,7 +59,7 @@ export function HeatMap(props) {
         {data.map( d => {
                 return <Cell key={d.date+d.country} d={d} xScale={xScale} yScale={yScale} 
                 color={colormap(d.suicides_calc)}   
-                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} selectedRow={selectedRow}/>
+                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
             })
         }
         {year_lst.map(s => {

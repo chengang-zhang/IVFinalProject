@@ -1,7 +1,7 @@
 import React from "react";
 
 export function Cell(props){
-    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry, selectedRow} = props;
+    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry} = props;
     
     const getOpacity = (selectedCountry, thisPoint) => {
         if  (!selectedCountry) {

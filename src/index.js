@@ -1,3 +1,4 @@
+import "./style.css";
 import React from 'react';
 import ReactDOM from "react-dom";
 import * as d3 from "d3";
@@ -38,10 +39,9 @@ function useData(csvPath){
     return dataAll;
 }
 
-
 function Suicide(){
     //highlight only
-    const [selectedRow, setSelectedRow] = React.useState(null);
+    const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
     const [selectedCountry, setSelectedCountry] = React.useState(null);
 
@@ -63,7 +63,7 @@ function Suicide(){
             <g>
                 <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
                 data={data} year_lst={year_lst} country={country_lst} 
-                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} selectedRow={selectedRow}/>
+                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
             </g>
         </svg>
         </div>
