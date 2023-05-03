@@ -22,10 +22,17 @@
     "react-dom": "^17.0.2",
     "source-map-loader": "^3.0.1",
     "style-loader": "^3.3.1",
-    "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.2",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.7.3"
   },
-  "dependencies": {},
-  "description": ""
+  "description": "Test Here",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chengang-zhang/IVFinalProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chengang-zhang/IVFinalProject/issues"
+  },
+  "homepage": "https://github.com/chengang-zhang/IVFinalProject#readme"
 }
