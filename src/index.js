@@ -117,21 +117,6 @@ function Suicide(){
                 <p className="text-center">Suicide/100k pop VS 1991-2010</p>
             </div>
         </div>
-        <div className='row'>
-            <div className="container-sm col-3 text-center">
-                <label for="customRange1" class="form-label">Select A Year</label>
-            </div>
-        </div>
-        <div className='row'>
-            <div className="container-sm col-3 text-center">
-                <input className="text-center" key="yearText" type="text" value={year_lst[year]} readOnly/>
-            </div>
-        </div>
-        <div className='row'>
-            <div className="container-sm col-3 text-center">
-            <input key="slider" class="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
-            </div>
-        </div>
         <div className='row text-center'>
             <div className='col-lg-6'>
                 <svg width={WIDTH} height={HEIGHT}>
@@ -155,10 +140,25 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <label for="customRange1" class="form-label">Select A Year</label>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <input className="text-center" key="yearText" type="text" value={year_lst[year]} readOnly/>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+            <input key="slider" class="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
+            </div>
+        </div>
+        <div className='row'>
             <div className='col-lg-6'>
                 {/* <svg width={WIDTH} height={HEIGHT}>
                     <g> */}
-                        <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH}/>
+                        <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
                     {/* </g>
                 </svg> */}
                 {/* <h2>Select property to highlight</h2> */}
