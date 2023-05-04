@@ -21,6 +21,7 @@ class DonutChart extends Component {
         const {data} = this.props;
         const svgContainer = d3.select(this.chRef.current).node();
         const width  = svgContainer.getBoundingClientRect().width;
+        //const width = 
         const height = width;
         const margin = 15;
         let radius = Math.min(width, height) / 2  - margin;

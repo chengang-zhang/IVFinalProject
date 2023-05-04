@@ -38,14 +38,21 @@ print(data_json['features'][0]['properties']['geounit'])
 
 for i in range(len(data_json['features'])):
     country_test = data_json['features'][i]['properties']['geounit']
-    if country_test in country_suicide.keys():
+    country_test2 = data_json['features'][i]['properties']['name']
+    if (country_test in country_suicide.keys()):
         for value in country_suicide[country_test]:
             year_for_json = value[0]
             suicide_for_json = value[1]
             data_json['features'][i]['properties'][year_for_json] = suicide_for_json
     else:
-        for x in year_as_string:
-            data_json['features'][i]['properties'][x] = 0.0
+        if (country_test2 in country_suicide.keys()):
+            for value in country_suicide[country_test2]:
+                year_for_json = value[0]
+                suicide_for_json = value[1]
+                data_json['features'][i]['properties'][year_for_json] = suicide_for_json
+        else:        
+            for x in year_as_string:
+                data_json['features'][i]['properties'][x] = 0.0
 
 #list of countries we have in our data set
 country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
@@ -76,5 +83,5 @@ year_as_string = [str(i) for i in year_lst]
 # data["features"]["properties"][] = {"randomdata" : "data"}
 
 # overwrite file
-with open(filename, 'w') as f:
+with open("IVFinalProject/Data/new.json", 'w') as f:
     json.dump(data_json, f, indent=4)
