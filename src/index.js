@@ -49,12 +49,17 @@ function useData(csvPath){
 
 function Suicide(){
     //highlight only
+    const [year, setYear] = React.useState('5');
     const [property, setProperty] = useState("pop_est");
     const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
     const [selectedCountry, setSelectedCountry] = React.useState(null);
     const [left,setLeft] = React.useState(null);
     const [top,setTop] = React.useState(null);
+
+    const changeHandler = (event) => {
+        setYear(event.target.value);
+    }
     
     
     
@@ -62,10 +67,13 @@ function Suicide(){
     const heatmap_height = HEIGHT - heatmap_margin.top - heatmap_margin.bottom;
     const heatmap_width = WIDTH - heatmap_margin.left - heatmap_margin.right;
 
-    const data = useData(csvurl);
-    if(!data){
+    const dataAll = useData(csvurl);
+    if(!dataAll){
         return <pre>Loading...</pre>
     }
+    const data = dataAll.filter( d => {
+        return d.year === year_lst[year];
+    });
 
     return <div>
         <div className='row'>
@@ -74,13 +82,17 @@ function Suicide(){
                 <h2 className="text-center">By Summer Xiao & Chengang Zhang</h2>
                 <p className="text-center">Suicide/100k pop VS 1991-2010</p>
             </div>
+            <div>
+            <input key="slider" type='range' min='1991' max='2010' value={year} step='1' onChange={changeHandler}/>
+            <input key="yearText" type="text" value={year_lst[year]} readOnly/>
+        </div>
         </div>
         <div className='row'>
             <div className='col-lg-6'>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                         <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
-                        data={data} year_lst={year_lst} country={country_lst} 
+                        data={dataAll} year_lst={year_lst} country={country_lst} 
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
                     </g>
                 </svg>
