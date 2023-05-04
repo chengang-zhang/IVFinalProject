@@ -1,29 +1,32 @@
 import React from "react";
 
 export function Cell(props){
-    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry} = props;
+    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear} = props;
     
     const getOpacity = (selectedCountry, thisPoint) => {
         if  (!selectedCountry) {
             return 1
         } else {
-            return (selectedCountry.country === thisPoint.country) ? 1 : 0.3
+            return (selectedCountry === thisPoint.country) ? 1 : 0.3
         }
     }
 
     const getStrokeWidth = (selectedCountry, thisPoint) => {
-        if  (!selectedCountry) {
+        
+        if  ((!selectedCountry) && (!selectedYear)) {
             return 1
         } else {
-            return (selectedCountry.country === thisPoint.country) ? 1.5 : 0.3
+            return (selectedCountry === thisPoint.country) ? 1.5 : 0.3
             }
         }
 
     const mouseOver = (d) => {
-        setSelectedCountry(d);
+        setSelectedCountry(d.country);
+        setSelectedYear(d.year);
     };
     const mouseOut = () => {
         setSelectedCountry(null);
+        setSelectedYear(null)
     };
     
     return <g transform={`translate(${xScale(d.year)}, ${yScale(d.country)})`}>
