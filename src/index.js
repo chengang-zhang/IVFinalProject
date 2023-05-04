@@ -103,7 +103,7 @@ function Suicide(){
             <input key="slider" class="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
             </div>
         </div>
-        <div className='row'>
+        <div className='row text-center'>
             <div className='col-lg-6'>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
