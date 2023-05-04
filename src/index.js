@@ -25,6 +25,8 @@ const country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', '
 'Sweden', 'Switzerland', 'Thailand', 'Trinidad and Tobago', 'Turkey', 'Turkmenistan', 'Ukraine', 'United Arab Emirates', 
 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan']
 const year_lst = [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]
+// const year_lst = ['1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010']
+
 const WIDTH = 900;
 const HEIGHT = 530;
 
@@ -49,7 +51,7 @@ function useData(csvPath){
 
 function Suicide(){
     //highlight only
-    const [year, setYear] = React.useState('5');
+    const [year, setYear] = React.useState('0');
     const [property, setProperty] = useState("pop_est");
     const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
@@ -57,15 +59,16 @@ function Suicide(){
     const [left,setLeft] = React.useState(null);
     const [top,setTop] = React.useState(null);
 
-    const changeHandler = (event) => {
-        setYear(event.target.value);
-    }
-    
-    
-    
+    const year_lst = [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]
+
+
     const heatmap_margin = {top: 40, right: 160, bottom: 50, left: 140};
     const heatmap_height = HEIGHT - heatmap_margin.top - heatmap_margin.bottom;
     const heatmap_width = WIDTH - heatmap_margin.left - heatmap_margin.right;
+
+    const changeHandler = (event) => {
+        setYear(event.target.value);
+    }
 
     const dataAll = useData(csvurl);
     if(!dataAll){
@@ -75,6 +78,8 @@ function Suicide(){
         return d.year === year_lst[year];
     });
 
+    console.log(data)
+
     return <div>
         <div className='row'>
             <div className='col-lg-12'>
@@ -82,10 +87,21 @@ function Suicide(){
                 <h2 className="text-center">By Summer Xiao & Chengang Zhang</h2>
                 <p className="text-center">Suicide/100k pop VS 1991-2010</p>
             </div>
-            <div>
-            <input key="slider" type='range' min='1991' max='2010' value={year} step='1' onChange={changeHandler}/>
-            <input key="yearText" type="text" value={year_lst[year]} readOnly/>
         </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <label for="customRange1" class="form-label">Select A Year</label>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <input className="text-center" key="yearText" type="text" value={year_lst[year]} readOnly/>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+            <input key="slider" class="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
+            </div>
         </div>
         <div className='row'>
             <div className='col-lg-6'>
@@ -124,7 +140,10 @@ function Suicide(){
                             <option value="1999">1999</option>
                             <option value="1998">1998</option>
                         </select>
-            </div>
+        </div>
+        <div className='col-lg-6'>
+
+        </div>
         </div>
         </div>
 
