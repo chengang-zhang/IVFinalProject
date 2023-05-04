@@ -5,13 +5,15 @@ import * as d3 from "d3";
 import GeoChart from "./GeoChart";
 import data_map from "../Data/GeoChart.world.geo.json";
 //import "./App.css";
+import DonutChart from './DonutChart.js';
 import { csv, json } from "d3";
 import { HeatMap } from './heatmap';
 import { ScatterPlot } from './scatterplot';
 import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 
 console.log(data_map)
-
+//const pieurl = '../Data/test.csv'
+const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
 const csvurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_country.csv'
 const country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'Colombia', 
@@ -52,7 +54,7 @@ function useData(csvPath){
 function Suicide(){
     //highlight only
     const [year, setYear] = React.useState('0');
-    const [property, setProperty] = useState("pop_est");
+    const [property, setProperty] = useState("2000");
     const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
     const [selectedCountry, setSelectedCountry] = React.useState(null);
@@ -70,13 +72,37 @@ function Suicide(){
         setYear(event.target.value);
     }
 
+    const pieDataAll = useData(pieurl);
+
     const dataAll = useData(csvurl);
     if(!dataAll){
+        return <pre>Loading...</pre>
+    }
+    if(!pieDataAll){
         return <pre>Loading...</pre>
     }
     const data = dataAll.filter( d => {
         return d.year === year_lst[year];
     });
+
+    const pieData = pieDataAll.filter( d => {
+        return d.year === year_lst[year];
+    });
+
+    // var transposedData = [];
+
+    // pieData.forEach(function(d) {
+    // for (var key in d) {
+    //     var obj = {};
+    //     if (key !== "Episode") {
+    //     obj.alphabet = key;
+    //     obj.value = d[key];
+    //     obj.Episode = d.Episode;
+    //     transposedData.push(obj)
+    //     } 
+    // }
+    // });
+    
 
     console.log(data)
 
@@ -143,7 +169,8 @@ function Suicide(){
                         </select>
         </div>
         <div className='col-lg-6'>
-
+        {/* pie chart here */}
+            <DonutChart data={pieData}  />
         </div>
         </div>
         </div>
