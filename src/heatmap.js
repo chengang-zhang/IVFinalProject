@@ -6,7 +6,7 @@ import { Legend } from "./legend";
 
 
 export function HeatMap(props) {
-    const{margin, height, width, data, year_lst, country, selectedCountry, setSelectedCountry} = props;
+    const{margin, height, width, data, year_lst, country, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear, year} = props;
 
     const xScale = Scales.band(year_lst, 0, width);
     const yScale = Scales.band(country, 0, height);
@@ -24,15 +24,15 @@ export function HeatMap(props) {
         if  (!selectedCountry) {
             return 1
         } else {
-            return (selectedCountry.country === thisPoint) ? 1 : 0.4
+            return (selectedCountry === thisPoint) ? 1 : 0.4
         } 
     };
 
-    const Opacity_year = (selectedCountry, thisPoint) => {
-        if  (!selectedCountry) {
+    const Opacity_year = (selectedYear, thisPoint) => {
+        if  (!selectedYear) {
             return 1
         } else {
-            return (selectedCountry.year === thisPoint) ? 1 : 0.4  
+            return (selectedYear === thisPoint) ? 1 : 0.4  
         } 
     };
 
@@ -41,31 +41,32 @@ export function HeatMap(props) {
             return '8px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedCountry.country === thisPoint) ? '14px' : '8px'  
+            return (selectedCountry === thisPoint) ? '13px' : '8px'  
         } 
     };
 
-    const fontsize_year = (selectedCountry,thisPoint) => {
-        if  (!selectedCountry) {
+    const fontsize_year = (selectedYear,thisPoint) => {
+        if  (!selectedYear) {
             return '10px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedCountry.year === thisPoint) ? '15px' : '10px'  
+            return (selectedYear === thisPoint) ? '13px' : '10px'  
         } 
     };
 
 
     return <g transform={`translate(${margin.left}, ${margin.top})`}>
         {data.map( d => {
-                return <Cell key={d.date+d.country} d={d} xScale={xScale} yScale={yScale} 
+                return <Cell key={d.index} d={d} xScale={xScale} yScale={yScale} 
                 color={colormap(d.suicides_calc)}   
-                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+                selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                selectedYear={selectedYear} setSelectedYear={setSelectedYear}/>
             })
         }
         {year_lst.map(s => {
                         return <g key={s} transform={`translate(${xScale(s)+18},-8)rotate(60)`}>
-                        <text style={{textAnchor:'end',fontSize:fontsize_year(selectedCountry,s)}}
-                                opacity={Opacity_year(selectedCountry,s)}>
+                        <text style={{textAnchor:'end',fontSize:fontsize_year(selectedYear,s)}}
+                                opacity={Opacity_year(selectedYear,s)}>
                                     {s}
                             </text>
                         </g>

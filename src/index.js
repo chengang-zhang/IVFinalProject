@@ -109,7 +109,8 @@ function Suicide(){
                     <g>
                         <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
                         data={dataAll} year_lst={year_lst} country={country_lst} 
-                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        selectedYear={selectedYear} setSelectedYear={setSelectedYear} year={year}/>
                     </g>
                 </svg>
             </div>
@@ -117,7 +118,7 @@ function Suicide(){
             <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
-                        selectedCoutnry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                         setLeft={setLeft} setTop={setTop}
                     /> 
                     </g>
