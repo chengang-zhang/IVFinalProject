@@ -39,6 +39,7 @@ print(data_json['features'][0]['properties']['geounit'])
 for i in range(len(data_json['features'])):
     country_test = data_json['features'][i]['properties']['geounit']
     country_test2 = data_json['features'][i]['properties']['name']
+    country_test3 = data_json['features'][i]['properties']['name_long']
     if (country_test in country_suicide.keys()):
         for value in country_suicide[country_test]:
             year_for_json = value[0]
@@ -50,9 +51,15 @@ for i in range(len(data_json['features'])):
                 year_for_json = value[0]
                 suicide_for_json = value[1]
                 data_json['features'][i]['properties'][year_for_json] = suicide_for_json
-        else:        
-            for x in year_as_string:
-                data_json['features'][i]['properties'][x] = 0.0
+        else:   
+            if (country_test3 in country_suicide.keys()):
+                for value in country_suicide[country_test3]:
+                    year_for_json = value[0]
+                    suicide_for_json = value[1]
+                    data_json['features'][i]['properties'][year_for_json] = suicide_for_json   
+            else:  
+                for x in year_as_string:
+                    data_json['features'][i]['properties'][x] = None
 
 #list of countries we have in our data set
 country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
