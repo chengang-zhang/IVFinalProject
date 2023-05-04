@@ -6,7 +6,7 @@ import useResizeObserver from "./useResizeObserver";
  * Component that renders a map of Germany.
  */
 
-function GeoChart({ data_map, property }) {
+function GeoChart({ data_map, property,width,height}) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
@@ -27,8 +27,10 @@ function GeoChart({ data_map, property }) {
 
     // use resized dimensions
     // but fall back to getBoundingClientRect, if no dimensions yet.
-    const { width, height } =
-      dimensions || wrapperRef.current.getBoundingClientRect();
+    // const { width, height } =
+    //   dimensions || wrapperRef.current.getBoundingClientRect();
+    const WIDTH = WIDTH;
+    const HEIGHT = HEIGHT;
 
     // projects geo-coordinates on a 2D plane
     const projection = geoMercator()
@@ -71,7 +73,7 @@ function GeoChart({ data_map, property }) {
 
   return (
     <div ref={wrapperRef} style={{ marginBottom: "2rem" }}>
-      <svg ref={svgRef}></svg>
+      <svg ref={svgRef} height={530} width={900}></svg>
     </div>
   );
 }

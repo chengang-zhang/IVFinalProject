@@ -12,8 +12,8 @@ import { ScatterPlot } from './scatterplot';
 import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 
 console.log(data_map)
-//const pieurl = '../Data/test.csv'
-const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
+const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
+//const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
 const csvurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_country.csv'
 const country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'Colombia', 
@@ -88,20 +88,23 @@ function Suicide(){
     const pieData = pieDataAll.filter( d => {
         return d.year === year_lst[year];
     });
+    console.log(data)
+    console.log(pieData)
 
-    // var transposedData = [];
+    var transposedData = [];
 
-    // pieData.forEach(function(d) {
-    // for (var key in d) {
-    //     var obj = {};
-    //     if (key !== "Episode") {
-    //     obj.alphabet = key;
-    //     obj.value = d[key];
-    //     obj.Episode = d.Episode;
-    //     transposedData.push(obj)
-    //     } 
-    // }
-    // });
+    pieData.forEach(function(d) {
+    for (var key in d) {
+        var obj = {};
+        if (key !== "country" && key !== "year" && key !== 'suicides_no' && key !== 'population' && key !== 'suicides_calc' && key !== 'gdp' && key !=='gdp_per_capita') {
+        obj.generation = key;
+        obj.value = d[key];
+        transposedData.push(obj);
+        } 
+    }
+    });
+
+    console.log(transposedData)
     
 
     console.log(data)
@@ -151,26 +154,30 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-        <div className='col-lg-6'>
-                <svg width={WIDTH} height={HEIGHT}>
-                    <g>
-                        <GeoChart data_map={data_map} property={property} />
-                    </g>
-                </svg>
-                <h2>Select property to highlight</h2>
-                        <select
+            <div className='col-lg-6'>
+                {/* <svg width={WIDTH} height={HEIGHT}>
+                    <g> */}
+                        <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH}/>
+                    {/* </g>
+                </svg> */}
+                {/* <h2>Select property to highlight</h2> */}
+                        {/* <select
                             value={property}
                             onChange={event => setProperty(event.target.value)}
                         >
                             <option value="2000">2000</option>
                             <option value="1999">1999</option>
                             <option value="1998">1998</option>
-                        </select>
-        </div>
-        <div className='col-lg-6'>
-        {/* pie chart here */}
-            <DonutChart data={pieData}  />
-        </div>
+                        </select> */}
+            </div>
+            <div className='col-lg-6'>
+            {/* pie chart here */}
+                {/* <svg width={WIDTH} height={HEIGHT}>
+                    <g> */}
+                        <DonutChart data={transposedData}  />
+                    {/* </g>
+                </svg> */}
+            </div>
         </div>
         </div>
 

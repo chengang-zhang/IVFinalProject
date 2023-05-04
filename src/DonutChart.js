@@ -37,7 +37,7 @@ class DonutChart extends Component {
         .append("g")
         .attr("transform", "translate(" + Math.min(width,height) / 2 + "," + Math.min(width,height) / 2 + ")");
 
-        let pie = d3.pie().value( d => d.suicide_no )
+        let pie = d3.pie().value( d => d.value)
         let data_ready = pie(data)
 
         // Donut partition  
@@ -66,7 +66,7 @@ class DonutChart extends Component {
         .attr("class", 'legend-g')
         .style("user-select", "none")
         .append('text')
-        .text(d =>  d.data.country)
+        .text(d =>  d.data.generation)
         .style("text-anchor", "middle")
         .style("font-weight", 700)
         .style("fill", '#222')
@@ -76,7 +76,7 @@ class DonutChart extends Component {
         svg
         .selectAll('.legend-g')
         .append('text')
-        .text((d)=>{ return  d.data.suicide_no})
+        .text((d)=>{ return  d.data.value})
         .style("fill", '#444')
         .style("font-size", 12)
         .style("text-anchor", "middle")
