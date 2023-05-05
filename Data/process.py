@@ -15,11 +15,9 @@ df_new_by_generation = pd.DataFrame()
 for c in df_new['country'].unique():
     for y in year:
         df_new_by_country_sub = df_new[(df_new['country'] == c) & (df_new['year'] == y)]
-        
         df1 = pd.DataFrame({'country':c, 'year':y, 'suicides_no':df_new_by_country_sub['suicides_no'].sum(axis = 0),
          'population':df_new_by_country_sub['population'].sum(axis = 0),
          'gdp': df_new_by_country_sub.iloc[:1,9], 'gdp_per_capita':df_new_by_country_sub.iloc[:1,10]})
-
         df1['suicides_calc'] = 100000 * df1['suicides_no']/df1['population']
         df_new_by_generation_sub = df_new_by_country_sub.groupby(by="generation")["suicides_no"].sum()
         df2 = pd.DataFrame({'country':c, 'year':y, 'Generation X':0, 'Silent':0, 'G.I. Generation':[0], 
