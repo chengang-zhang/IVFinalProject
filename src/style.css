@@ -22,3 +22,9 @@ h1 {
 h2 {
 	font-family: 'Rubik Pixels', cursive;
 }
+
+svg .country:hover {
+	stroke: black;
+	stroke-width: 1px;
+	cursor: pointer;
+  }
