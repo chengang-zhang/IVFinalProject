@@ -105,7 +105,7 @@ function Suicide(){
     pieData.forEach(function(d) { 
     for (var key in d) {
         var obj = {};
-        if (key !== "country" && key !== "year" && key !== 'suicides_no' && key !== 'population' && key !== 'suicides_calc' && key !== 'gdp' && key !=='gdp_per_capita') {
+        if (key !== '' && key !== "country" && key !== "year" && key !== 'suicides_no' && key !== 'population' && key !== 'suicides_calc' && key !== 'gdp' && key !=='gdp_per_capita') {
         obj.generation = key;
         obj.value = d[key];
         transposedData.push(obj);
@@ -113,7 +113,7 @@ function Suicide(){
     }
     });
 
-    //console.log(transposedData)
+    console.log(transposedData)
     
 
     //console.log(data)

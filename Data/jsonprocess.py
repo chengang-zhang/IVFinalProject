@@ -59,7 +59,7 @@ for i in range(len(data_json['features'])):
                     data_json['features'][i]['properties'][year_for_json] = suicide_for_json   
             else:  
                 for x in year_as_string:
-                    data_json['features'][i]['properties'][x] = None
+                    data_json['features'][i]['properties'][x] = -1
 
 #list of countries we have in our data set
 country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
