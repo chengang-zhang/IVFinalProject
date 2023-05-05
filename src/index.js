@@ -137,13 +137,15 @@ function Suicide(){
                     </g>
                 </svg>
             </div>
-            <div className='col-lg-6'>
+            <div className='col-lg-1'>
+
+            </div>
+            <div className='col-lg-5'>
             <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
-                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                        setLeft={setLeft} setTop={setTop}
-                    /> 
+                    
+                      <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
+                        
                     </g>
                 </svg>
             </div>
@@ -180,18 +182,13 @@ function Suicide(){
                             <option value="1998">1998</option>
                         </select> */}
             </div>
-            <div className='col-lg-1'>
-
-            </div>
-            <div className='col-lg-5'>
-            {/* <DonutChart data={transposedData}  /> */}
-            {/* create condition to check values, if all values are 0 then no need to plot */}
-            {/* Pie chart here */}
-                <svg width={WIDTH} height={HEIGHT}>
+            <div className='col-lg-6'>
+            <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    
-                      <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-250} />
-                        
+                    <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        setLeft={setLeft} setTop={setTop}
+                    /> 
                     </g>
                 </svg>
 
