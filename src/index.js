@@ -205,10 +205,11 @@ function Suicide(){
         </div>
             <div className="row">
                 <div className='col-lg-6 text-center'>
-                    <h3>Map Showing Suicide Counts</h3>
-                    <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>   
+                    <h3>Map Showing Total Suicide Counts</h3>
+                    <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
                 </div>
-                <div className='col-lg-6'>
+                <div className='col-lg-6 text-center'>
+                <h3>Suicide Count vs Absolute GDP</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}

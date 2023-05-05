@@ -12,6 +12,7 @@ function GeoChart({ data_map, property,width,height}) {
   const dimensions = useResizeObserver(wrapperRef);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
+
   // will be called initially and on every data change
   useEffect(() => {
     const svg = select(svgRef.current);
