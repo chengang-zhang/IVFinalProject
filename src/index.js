@@ -7,14 +7,15 @@ import GeoChart from "./GeoChart";
 import data_map from "../Data/new.json";
 //import "./App.css";
 import DonutChart from './DonutChart.js';
+import { Piechart } from './piechart.js';
 import { csv, json } from "d3";
 import { HeatMap } from './heatmap';
 import { ScatterPlot } from './scatterplot';
 import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 
-console.log(data_map)
-const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
-//const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
+//console.log(data_map)
+//const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
+const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
 const csvurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_country.csv'
 const country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'Colombia', 
@@ -54,7 +55,7 @@ function useData(csvPath){
 
 function Suicide(){
     //highlight only
-    const [year, setYear] = React.useState('5');
+    const [year, setYear] = React.useState('0');
     const [property, setProperty] = useState("2000");
     const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
@@ -86,15 +87,22 @@ function Suicide(){
         return d.year === year_lst[year];
     });
 
-    const pieData = pieDataAll.filter( d => {
-        return d.year === year_lst[year];
+    // const currentCountry= pieDataAll.filter(d => d.country===selectedCountry)[0];
+    // console.log(currentCountry)
+
+    const pieDataCountry = pieDataAll.filter( pd => {
+        return pd.country === selectedCountry;
     });
-    console.log(data)
+
+    console.log(pieDataCountry)
+
+    const pieData = pieDataCountry.filter( pd => {
+        return pd.year === year_lst[year];
+    });
     console.log(pieData)
 
     var transposedData = [];
-
-    pieData.forEach(function(d) {
+    pieData.forEach(function(d) { 
     for (var key in d) {
         var obj = {};
         if (key !== "country" && key !== "year" && key !== 'suicides_no' && key !== 'population' && key !== 'suicides_calc' && key !== 'gdp' && key !=='gdp_per_capita') {
@@ -105,10 +113,10 @@ function Suicide(){
     }
     });
 
-    console.log(transposedData)
+    //console.log(transposedData)
     
 
-    console.log(data)
+    //console.log(data)
 
     return <div>
         <div className='row'>
@@ -172,13 +180,21 @@ function Suicide(){
                             <option value="1998">1998</option>
                         </select> */}
             </div>
-            <div className='col-lg-6'>
-            {/* pie chart here */}
-                {/* <svg width={WIDTH} height={HEIGHT}>
-                    <g> */}
-                        <DonutChart data={transposedData}  />
-                    {/* </g>
-                </svg> */}
+            <div className='col-lg-1'>
+
+            </div>
+            <div className='col-lg-5'>
+            {/* <DonutChart data={transposedData}  /> */}
+            {/* create condition to check values, if all values are 0 then no need to plot */}
+            {/* Pie chart here */}
+                <svg width={WIDTH} height={HEIGHT}>
+                    <g>
+                    
+                      <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-250} />
+                        
+                    </g>
+                </svg>
+
             </div>
         </div>
         </div>
