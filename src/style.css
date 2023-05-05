@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Montserrat+Alternates:wght@200&display=swap');
+
+
 /* div {color: #245a90;
 	font-family: 'Noto Sans', sans-serif;
 	border: 1px outset rgb(237, 244, 243);
@@ -7,3 +10,15 @@
 /* body {
 		font-family: 'Luminari';
 	} */
+
+h1 {
+	font-family: 'Bruno Ace SC', cursive;
+}
+
+.chartTitle {
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+body {
+	
+}

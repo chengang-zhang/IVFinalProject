@@ -118,7 +118,8 @@ function Suicide(){
 
     //console.log(data)
 
-    return <div>
+    return <div style={{
+        backgroundColor: '#F5F5DC'}}>
         <div className='row'>
             <div className='col-lg-12'>
                 <h1 className="text-center">Understanding Global Suicide Trends</h1>
@@ -142,7 +143,7 @@ function Suicide(){
         </div>
         <div className='row'>
             <div className='col-lg-8 text-center'>
-                <h3>Heat Map Showing Suicide Per Capita</h3>
+                <h3 className="chartTitle" >Heat Map Showing Suicide Per Capita</h3>
                 <svg width={WIDTH*1.2} height={HEIGHT}>
                     <g>
                         <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width*1.2} 
@@ -156,7 +157,7 @@ function Suicide(){
 
             </div> */}
             <div className='col-lg-4 text-center'>
-                <h3>Donut Chart Showing Generations</h3>
+                <h3 className="chartTitle">Donut Chart Showing Generations</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                         <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
@@ -166,7 +167,7 @@ function Suicide(){
         </div>
         <div className='row text-center'>
             <div className='col-lg-6'>
-                <h3>Suicide Per Capita vs GDP Per Capita</h3>
+                <h3 className="chartTitle">Suicide Per Capita vs GDP Per Capita</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
@@ -177,7 +178,7 @@ function Suicide(){
                 </svg>
             </div>
             <div className='col-lg-6 text-center'>
-                <h3>Suicide Count vs Absolute GDP</h3>
+                <h3 className="chartTitle">Suicide Count vs Absolute GDP</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
@@ -211,14 +212,14 @@ function Suicide(){
             <div className="row text-center">
             
                 <div className='col-lg-6 text-center'>
-                    <h3>Map Showing Suicide Count Per Capita</h3>
+                    <h3 className="chartTitle">Map Showing Suicide Count Per Capita</h3>
     
                     <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
                     
                 </div>
                 
                 <div className='col-lg-6 text-center'>
-                    <h3>Map Showing Total Suicide Counts</h3>
+                    <h3 className="chartTitle">Map Showing Total Suicide Counts</h3>
                     <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
                 </div>
             </div>
