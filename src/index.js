@@ -6,7 +6,6 @@ import GeoChart from "./GeoChart";
 //import data_map from "../Data/GeoChart.world.geo.json";
 import data_map from "../Data/new.json";
 import data_map_abs from "../Data/suicide_abs.json";
-//import "./App.css";
 import DonutChart from './DonutChart.js';
 import { Piechart } from './piechart.js';
 import { csv, json } from "d3";
@@ -126,30 +125,6 @@ function Suicide(){
                 <h2 className="text-center">By Summer Xiao & Chengang Zhang</h2>
             </div>
         </div>
-        <div className='row text-center'>
-            <div className='col-lg-6'>
-                <h3>Heat Map Showing Suicide Per Capita</h3>
-                <svg width={WIDTH} height={HEIGHT}>
-                    <g>
-                        <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
-                        data={dataAll} year_lst={year_lst} country_lst={country_lst} 
-                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                        selectedYear={selectedYear} setSelectedYear={setSelectedYear} setYear={setYear}/>
-                    </g>
-                </svg>
-            </div>
-            <div className='col-lg-6'>
-                <h3>Suicide Per Capita vs GDP Per Capita</h3>
-                <svg width={WIDTH} height={HEIGHT}>
-                    <g>
-                    <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
-                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                        setLeft={setLeft} setTop={setTop}
-                    />
-                    </g>
-                </svg>
-            </div>
-        </div>
         <div className='row'>
             <div className="container-sm col-3 text-center">
                 <label htmlFor="customRange1" className="form-label">Select A Year</label>
@@ -166,14 +141,21 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-            <div className='col-lg-6 text-center'>
-                <h3>Map Showing Suicide Count Per Capita</h3>
-                <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+            <div className='col-lg-8 text-center'>
+                <h3>Heat Map Showing Suicide Per Capita</h3>
+                <svg width={WIDTH*1.2} height={HEIGHT}>
+                    <g>
+                        <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width*1.2} 
+                        data={dataAll} year_lst={year_lst} country_lst={country_lst} 
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        selectedYear={selectedYear} setSelectedYear={setSelectedYear} setYear={setYear}/>
+                    </g>
+                </svg>
             </div>
-            <div className='col-lg-1'>
+            {/* <div className='col-lg-1'>
 
-            </div>
-            <div className='col-lg-5'>
+            </div> */}
+            <div className='col-lg-4 text-center'>
                 <h3>Donut Chart Showing Generations</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
@@ -181,6 +163,30 @@ function Suicide(){
                     </g>
                 </svg>
             </div>
+        </div>
+        <div className='row text-center'>
+            <div className='col-lg-6'>
+                <h3>Suicide Per Capita vs GDP Per Capita</h3>
+                <svg width={WIDTH} height={HEIGHT}>
+                    <g>
+                    <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        setLeft={setLeft} setTop={setTop}
+                    />
+                    </g>
+                </svg>
+            </div>
+            <div className='col-lg-6 text-center'>
+                <h3>Suicide Count vs Absolute GDP</h3>
+                <svg width={WIDTH} height={HEIGHT}>
+                    <g>
+                    <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        setLeft={setLeft} setTop={setTop}
+                    />
+                    </g>
+                    </svg>
+                </div>
         </div>
         <div className='row'>
             <div className="container-sm col-3 text-center">
@@ -202,21 +208,18 @@ function Suicide(){
 
             </div>
         </div>
-            <div className="row">
+            <div className="row text-center">
+            
+                <div className='col-lg-6 text-center'>
+                    <h3>Map Showing Suicide Count Per Capita</h3>
+    
+                    <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+                    
+                </div>
+                
                 <div className='col-lg-6 text-center'>
                     <h3>Map Showing Total Suicide Counts</h3>
                     <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
-                </div>
-                <div className='col-lg-6 text-center'>
-                <h3>Suicide Count vs Absolute GDP</h3>
-                <svg width={WIDTH} height={HEIGHT}>
-                    <g>
-                    <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
-                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                        setLeft={setLeft} setTop={setTop}
-                    />
-                    </g>
-                    </svg>
                 </div>
             </div>
         </div>
