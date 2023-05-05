@@ -209,7 +209,7 @@ function Suicide(){
                     <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>   
                 </div>
                 <div className='col-lg-6'>
-                <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                    <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                         setLeft={setLeft} setTop={setTop}
                     />
