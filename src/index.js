@@ -45,7 +45,7 @@ function useData(csvPath){
                 d.suicides_no = +d.suicides_no;
                 d.population = +d.population;
                 d.suicides_calc = +d.suicides_calc;
-                d.gdp = +d.gdp;
+                d.gdp = +d.gdp/1000000000;
                 d.gdp_per_capita = +d.gdp_per_capita;
             });
             setData(data);

@@ -10,9 +10,9 @@ function XAxis (props) {
         return <g>
             <line x1={0} y1={height} x2={width} y2={height} stroke={'black'}/>
             {ticks.map(tickValue =>
-                <g key = {tickValue} transform={`translate(${xScale(tickValue)},${height})`}>
+                <g key = {tickValue} transform={`translate(${xScale(tickValue)},${height}) rotate(30)`}>
                     <line y2 = {10} stroke = {"black"}/>
-                    <text style = {{ textAnchor:'middle',fontSize:'10px' }} y = {20}>
+                    <text style = {{ textAnchor:'start',fontSize:'10px' }} y = {20}>
                         {tickValue}   
                     </text>
                 </g>)}

@@ -42,6 +42,7 @@ for c in df_new['country'].unique():
 # print(df_new_by_country.head(5))
 df_new_by_country.replace(',','', regex=True, inplace=True)
 pd.to_numeric(df_new_by_country['gdp'], downcast='integer')
+# df_new_by_country['gdp'] = df_new_by_country['gdp']/1000000
 df_new_by_country.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_country.csv')
 df_new_by_generation.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_generation.csv')
 # print(df_new_by_country['country'].unique().tolist())
