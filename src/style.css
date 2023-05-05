@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Montserrat+Alternates:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Montserrat+Alternates:wght@200&family=Rubik+Pixels&display=swap');
 
 
 /* div {color: #245a90;
@@ -19,6 +19,6 @@ h1 {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 
-body {
-	
+h2 {
+	font-family: 'Rubik Pixels', cursive;
 }
