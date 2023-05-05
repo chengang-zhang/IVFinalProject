@@ -131,9 +131,9 @@ function Suicide(){
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                         <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
-                        data={dataAll} year_lst={year_lst} country={country_lst} 
+                        data={dataAll} year_lst={year_lst} country_lst={country_lst} 
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                        selectedYear={selectedYear} setSelectedYear={setSelectedYear} year={year}/>
+                        selectedYear={selectedYear} setSelectedYear={setSelectedYear} setYear={setYear}/>
                     </g>
                 </svg>
             </div>
@@ -150,7 +150,7 @@ function Suicide(){
         </div>
         <div className='row'>
             <div className="container-sm col-3 text-center">
-                <label for="customRange1" class="form-label">Select A Year</label>
+                <label htmlFor="customRange1" className="form-label">Select A Year</label>
             </div>
         </div>
         <div className='row'>
@@ -160,7 +160,7 @@ function Suicide(){
         </div>
         <div className='row'>
             <div className="container-sm col-3 text-center">
-            <input key="slider" class="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
+            <input key="slider" className="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
             </div>
         </div>
         <div className='row'>
@@ -198,6 +198,7 @@ function Suicide(){
             </div>
         </div>
         </div>
+
 
 }
 
