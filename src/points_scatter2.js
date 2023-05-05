@@ -8,7 +8,7 @@ export function Points2(props){
         return selectedCountry===country ? "#800000" : "#FFDCD1";
     }
     const getRadius = (selectedCountry, country) => {
-        return selectedCountry===country ? 8 : 3;
+        return selectedCountry===country ? 8 : 4;
     }
 
     // return <g>
