@@ -54,7 +54,7 @@ function useData(csvPath){
 
 function Suicide(){
     //highlight only
-    const [year, setYear] = React.useState('0');
+    const [year, setYear] = React.useState('5');
     const [property, setProperty] = useState("2000");
     const [selectedYear, setSelectedYear] = React.useState(null);
     //a row + highlight + dim other countries
