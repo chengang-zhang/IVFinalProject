@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import GeoChart from "./GeoChart";
 //import data_map from "../Data/GeoChart.world.geo.json";
 import data_map from "../Data/new.json";
+import data_map_abs from "../Data/suicide_abs.json";
 //import "./App.css";
 import DonutChart from './DonutChart.js';
 import { Piechart } from './piechart.js';
@@ -13,7 +14,6 @@ import { HeatMap } from './heatmap';
 import { ScatterPlot } from './scatterplot';
 import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 
-//console.log(data_map)
 //const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
 const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
 const csvurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_country.csv'
@@ -128,6 +128,7 @@ function Suicide(){
         </div>
         <div className='row text-center'>
             <div className='col-lg-6'>
+                <h3>Heat Map Showing Suicide Per Capita</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                         <HeatMap margin={heatmap_margin} height={heatmap_height} width={heatmap_width} 
@@ -138,6 +139,7 @@ function Suicide(){
                 </svg>
             </div>
             <div className='col-lg-6'>
+                <h3>Suicide Per Capita vs GDP Per Capita</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
@@ -164,25 +166,46 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-            <div className='col-lg-6'>
-                <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+            <div className='col-lg-6 text-center'>
+                <h3>Map Showing Suicide Count Per Capita</h3>
+                <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
             </div>
             <div className='col-lg-1'>
 
             </div>
             <div className='col-lg-5'>
+                <h3>Donut Chart Showing Generations</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    
-                    <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
-                        
+                        <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
                     </g>
                 </svg>
             </div>
         </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <label htmlFor="customRange1" className="form-label">Select A Year</label>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+                <input className="text-center" key="yearText" type="text" value={year_lst[year]} readOnly/>
+            </div>
+        </div>
+        <div className='row'>
+            <div className="container-sm col-3 text-center">
+            <input key="slider" className="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-lg-6">
+
+            </div>
+        </div>
             <div className="row">
-                <div className='col-lg-6'>
-                    
+                <div className='col-lg-6 text-center'>
+                    <h3>Map Showing Suicide Counts</h3>
+                    <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>   
                 </div>
                 <div className='col-lg-6'>
                     
