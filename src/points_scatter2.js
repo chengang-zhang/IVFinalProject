@@ -5,10 +5,10 @@ export function Points2(props){
     //const [selectedCountry, setSelectedCountry] = React.useState(null);
     
     const getColor = (selectedCountry, country) => {
-        return selectedCountry===country ? "red" : "steelblue";
+        return selectedCountry===country ? "#800000" : "#FFDCD1";
     }
     const getRadius = (selectedCountry, country) => {
-        return selectedCountry===country ? 10 : 5;
+        return selectedCountry===country ? 8 : 3;
     }
 
     // return <g>
@@ -60,7 +60,7 @@ export function Points2(props){
                 onMouseOut={()=> {setSelectedCountry(null)}}
                 />
             })}
-            <rect key="cover" x={0} y={0} width={width} height={height} fill={'#fce703'} opacity={0.6}/>
+            <rect key="cover" x={0} y={0} width={width} height={height} fill={'#ff8a75'} opacity={0.2}/>
             {data.filter(d => d.country===selectedCountry).map(d => 
             <circle key={d.country} 
                 cx={xScale(d.gdp)} 

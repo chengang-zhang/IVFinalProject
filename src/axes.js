@@ -16,7 +16,7 @@ function XAxis (props) {
                         {tickValue}   
                     </text>
                 </g>)}
-            <text style = {{fontSize:'14px'}} transform={`translate(${width-180},${height-10})`}>
+            <text style = {{fontSize:'14px'}} transform={`translate(${width-80},${height-10})`}>
                 {axisLabel}
             </text>
         </g>
@@ -45,8 +45,8 @@ function YAxis(props) {
         <line y2={height} stroke={'black'} />
         {ticks.map(tickValue => 
                 <g key={tickValue} transform={`translate(0, ${yScale(tickValue)})`}>
-                    <line x2={10} stroke={'black'} />
-                    <text style={{textAnchor:'end', fontSize:'10px'}}>
+                    <line x2={-10} stroke={'black'} />
+                    <text x={-12} style={{textAnchor:'end', fontSize:'10px'}}>
                         {tickValue}
                     </text>
                 </g>

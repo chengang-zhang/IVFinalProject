@@ -24,7 +24,7 @@ export function HeatMap(props) {
         if  (!selectedCountry) {
             return 1
         } else {
-            return (selectedCountry === thisPoint) ? 1 : 0.4
+            return (selectedCountry === thisPoint) ? 1 : 0.2
         } 
     };
 
@@ -41,7 +41,7 @@ export function HeatMap(props) {
             return '8px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedCountry === thisPoint) ? '13px' : '8px'  
+            return (selectedCountry === thisPoint) ? '15px' : '6px'  
         } 
     };
 
@@ -50,7 +50,7 @@ export function HeatMap(props) {
             return '10px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedYear === thisPoint) ? '13px' : '10px'  
+            return (selectedYear === thisPoint) ? '15px' : '10px'  
         } 
     };
 

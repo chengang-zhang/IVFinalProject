@@ -124,7 +124,6 @@ function Suicide(){
             <div className='col-lg-12'>
                 <h1 className="text-center">Understanding Global Suicide Trends</h1>
                 <h2 className="text-center">By Summer Xiao & Chengang Zhang</h2>
-                <p className="text-center">Suicide/100k pop VS 1991-2010</p>
             </div>
         </div>
         <div className='row text-center'>
