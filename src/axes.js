@@ -16,7 +16,7 @@ function XAxis (props) {
                         {tickValue}   
                     </text>
                 </g>)}
-            <text style = {{fontSize:'14px'}} transform={`translate(${width-80},${height-10})`}>
+            <text style = {{fontSize:'18px'}} transform={`translate(${width-100},${height-10})`}>
                 {axisLabel}
             </text>
         </g>
@@ -52,7 +52,7 @@ function YAxis(props) {
                 </g>
             )
         }
-        <text style={{ textAnchor:'end', fontSize:'14px'}} x={0} y={14} transform={`rotate(-90)`}>
+        <text style={{ textAnchor:'end', fontSize:'16px'}} x={0} y={20} transform={`rotate(-90)`}>
             {axisLabel}
         </text>
         
