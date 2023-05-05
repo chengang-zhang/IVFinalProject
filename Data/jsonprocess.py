@@ -37,6 +37,7 @@ with open(filename) as f:
 print(data_json['features'][0]['properties']['geounit'])
 
 for i in range(len(data_json['features'])):
+    year_list_test = [i for i in year_as_string]
     country_test = data_json['features'][i]['properties']['geounit']
     country_test2 = data_json['features'][i]['properties']['name']
     country_test3 = data_json['features'][i]['properties']['name_long']
@@ -44,19 +45,32 @@ for i in range(len(data_json['features'])):
         for value in country_suicide[country_test]:
             year_for_json = value[0]
             suicide_for_json = value[1]
+            year_list_test.remove(year_for_json)
             data_json['features'][i]['properties'][year_for_json] = suicide_for_json
+        if len(year_list_test) > 0:
+            for year in year_list_test:
+                data_json['features'][i]['properties'][year] = -1
+
     else:
         if (country_test2 in country_suicide.keys()):
             for value in country_suicide[country_test2]:
                 year_for_json = value[0]
                 suicide_for_json = value[1]
+                year_list_test.remove(year_for_json)
                 data_json['features'][i]['properties'][year_for_json] = suicide_for_json
+            if len(year_list_test) > 0:
+                for year in year_list_test:
+                    data_json['features'][i]['properties'][year] = -1
         else:   
             if (country_test3 in country_suicide.keys()):
                 for value in country_suicide[country_test3]:
                     year_for_json = value[0]
                     suicide_for_json = value[1]
-                    data_json['features'][i]['properties'][year_for_json] = suicide_for_json   
+                    year_list_test.remove(year_for_json)
+                    data_json['features'][i]['properties'][year_for_json] = suicide_for_json 
+                if len(year_list_test) > 0:
+                    for year in year_list_test:
+                        data_json['features'][i]['properties'][year] = -1 
             else:  
                 for x in year_as_string:
                     data_json['features'][i]['properties'][x] = -1
