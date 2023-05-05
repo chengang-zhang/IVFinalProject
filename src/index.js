@@ -141,7 +141,7 @@ function Suicide(){
 
             </div>
             <div className='col-lg-5'>
-            <svg width={WIDTH} height={HEIGHT}>
+                <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     
                       <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
@@ -167,23 +167,10 @@ function Suicide(){
         </div>
         <div className='row'>
             <div className='col-lg-6'>
-                {/* <svg width={WIDTH} height={HEIGHT}>
-                    <g> */}
-                        <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
-                    {/* </g>
-                </svg> */}
-                {/* <h2>Select property to highlight</h2> */}
-                        {/* <select
-                            value={property}
-                            onChange={event => setProperty(event.target.value)}
-                        >
-                            <option value="2000">2000</option>
-                            <option value="1999">1999</option>
-                            <option value="1998">1998</option>
-                        </select> */}
+                <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
             </div>
             <div className='col-lg-6'>
-            <svg width={WIDTH} height={HEIGHT}>
+                <svg width={WIDTH} height={HEIGHT}>
                     <g>
                     <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
@@ -191,9 +178,16 @@ function Suicide(){
                     /> 
                     </g>
                 </svg>
-
             </div>
         </div>
+            <div className="row">
+                <div className='col-lg-6'>
+                    
+                </div>
+                <div className='col-lg-6'>
+                    
+                </div>
+            </div>
         </div>
 
 
