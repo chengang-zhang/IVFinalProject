@@ -14,7 +14,7 @@ export function ScatterPlot2(props){
             <Points2 data={data} xScale={xScale} yScale={yScale} height={height} width={width}
                 selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                 />
-            <YAxis yScale={yScale} height={height} axisLabel={"Suicide"}/>
+            <YAxis yScale={yScale} height={height} axisLabel={"Suicide Count"}/>
             <XAxis chartType={'scatter'} xScale={xScale} height={height} width={width} axisLabel={"GDP(bn)"}/>
         </g>
     

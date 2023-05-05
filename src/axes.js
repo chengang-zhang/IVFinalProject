@@ -52,7 +52,7 @@ function YAxis(props) {
                 </g>
             )
         }
-        <text style={{ textAnchor:'end', fontSize:'16px'}} x={0} y={20} transform={`rotate(-90)`}>
+        <text style={{ textAnchor:'start', fontSize:'18px'}} x={-10} y={-20} transform={`rotate(0)`}>
             {axisLabel}
         </text>
         
