@@ -6,13 +6,13 @@ import { Legend } from "./legend";
 
 
 export function HeatMap(props) {
-    const{margin, height, width, data, year_lst, country, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear, year} = props;
+    const{margin, height, width, data, year_lst, country_lst, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear, setYear} = props;
 
     const xScale = Scales.band(year_lst, 0, width);
-    const yScale = Scales.band(country, 0, height);
+    const yScale = Scales.band(country_lst, 0, height);
 
     var colorRange = [interpolateOrRd(0), interpolateOrRd(0.5), interpolateOrRd(1.0)]; 
-    var startRange = [0, 
+    var startRange = [0,
                     median(data, d => d.suicides_calc),
                     max(data, d => d.suicides_calc)];
     // range for legend
@@ -57,28 +57,28 @@ export function HeatMap(props) {
 
     return <g transform={`translate(${margin.left}, ${margin.top})`}>
         {data.map( d => {
-                return <Cell key={d.index} d={d} xScale={xScale} yScale={yScale} 
+                return <Cell key={d.country+d.year} d={d} xScale={xScale} yScale={yScale} 
                 color={colormap(d.suicides_calc)}   
                 selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
-                selectedYear={selectedYear} setSelectedYear={setSelectedYear}/>
+                selectedYear={selectedYear} setSelectedYear={setSelectedYear} setYear={setYear}/>
             })
         }
         {year_lst.map(s => {
-                        return <g key={s} transform={`translate(${xScale(s)+18},-8)rotate(60)`}>
+                        return <g key={s} transform={`translate(${xScale(s)+18},-8)rotate(40)`}>
                         <text style={{textAnchor:'end',fontSize:fontsize_year(selectedYear,s)}}
                                 opacity={Opacity_year(selectedYear,s)}>
                                     {s}
                             </text>
                         </g>
                     })}
-        {country.map(c => {
+        {country_lst.map(c => {
                     return <text key={c} style={{textAnchor:'end', fontSize:fontsize_country(selectedCountry,c)}} 
                     x={-5} y={yScale(c)+3} opacity={Opacity_country(selectedCountry,c)}>
                                 {c}
                             </text>
                 })}
 
-        <Legend x={0} y={height+10} width={width/2} height={10} numberOfTicks={5} 
+        <Legend x={0} y={height+8} width={width/2} height={8} numberOfTicks={5} 
             rangeOfValues={rangeOfValues} colormap={colormap}/>
         </g>
 

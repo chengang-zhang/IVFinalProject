@@ -8,8 +8,8 @@ col_country = ['country', 'year', 'suicides_no', 'population', 'suicides_calc',
 year = [y for y in range(1991, 2011)]
 df_new = df[df['year'].isin(year)]
 
-df_new_by_country = pd.DataFrame(columns = col_country,index = None)
-df_new_by_generation = pd.DataFrame(index = None)
+df_new_by_country = pd.DataFrame(columns = col_country)
+df_new_by_generation = pd.DataFrame()
 
 for c in df_new['country'].unique():
     for y in year:
@@ -39,7 +39,7 @@ for c in df_new['country'].unique():
         df_new_by_generation = df_new_by_generation.append(df2)
         df_new_by_country = df_new_by_country.append(df1)
 # print(df_new_by_country.head(5))
-df_new_by_country.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_country.csv', index=False)
-df_new_by_generation.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_generation.csv', index=False)
+df_new_by_country.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_country.csv')
+df_new_by_generation.to_csv('/Users/summerxiao/Desktop/IV/Final Project/IVFinalProject/Data/by_generation.csv')
 # print(df_new_by_country['country'].unique().tolist())
 # print(df['generation'].unique())

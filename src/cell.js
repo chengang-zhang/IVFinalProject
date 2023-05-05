@@ -1,7 +1,7 @@
 import React from "react";
 
 export function Cell(props){
-    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear} = props;
+    const { d, xScale, yScale, color, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear, setYear} = props;
     
     const getOpacity = (selectedCountry, thisPoint) => {
         if  (!selectedCountry) {
@@ -23,6 +23,7 @@ export function Cell(props){
     const mouseOver = (d) => {
         setSelectedCountry(d.country);
         setSelectedYear(d.year);
+        setYear(d.year-1991);
     };
     const mouseOut = () => {
         setSelectedCountry(null);
