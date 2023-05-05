@@ -4,7 +4,7 @@ import * as d3 from "d3";
 export function Piechart(props){
     const {data, innerRadius, outerRadius} = props;
     const colorScale = d3.scaleSequential()      
-        .interpolator(d3.interpolateCool)      
+        .interpolator(d3.interpolateReds)      
         .domain([0, data.length]);
     const arcGenerator = d3.arc()
         .innerRadius(innerRadius)
