@@ -142,7 +142,7 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-            <div className='col-lg-8 text-center'>
+            <div className='col-lg-7 text-center'>
                 <h3 className="chartTitle" >Heat Map Showing Suicide Per Capita</h3>
                 <svg width={WIDTH*1.2} height={HEIGHT}>
                     <g>
@@ -156,7 +156,7 @@ function Suicide(){
             {/* <div className='col-lg-1'>
 
             </div> */}
-            <div className='col-lg-4 text-center'>
+            <div className='col-lg-5 text-center'>
                 <h3 className="chartTitle">Donut Chart Showing Generations</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
