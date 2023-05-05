@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Points(props){
+export function Points1(props){
     const {data, xScale, yScale, width, height, selectedCountry, setSelectedCountry} = props;
     //const [selectedCountry, setSelectedCountry] = React.useState(null);
     

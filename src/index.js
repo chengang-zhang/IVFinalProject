@@ -11,7 +11,8 @@ import DonutChart from './DonutChart.js';
 import { Piechart } from './piechart.js';
 import { csv, json } from "d3";
 import { HeatMap } from './heatmap';
-import { ScatterPlot } from './scatterplot';
+import { ScatterPlot1 } from './scatterplot1';
+import { ScatterPlot2 } from './scatterplot2';
 import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 
 //const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
@@ -142,10 +143,10 @@ function Suicide(){
                 <h3>Suicide Per Capita vs GDP Per Capita</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    <ScatterPlot data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                    <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                         setLeft={setLeft} setTop={setTop}
-                    /> 
+                    />
                     </g>
                 </svg>
             </div>
@@ -208,7 +209,10 @@ function Suicide(){
                     <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>   
                 </div>
                 <div className='col-lg-6'>
-                    
+                <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                        selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
+                        setLeft={setLeft} setTop={setTop}
+                    />
                 </div>
             </div>
         </div>
