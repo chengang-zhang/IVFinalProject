@@ -214,13 +214,13 @@ function Suicide(){
                 <div className='col-lg-6 text-center'>
                     <h3 className="chartTitle">Map Showing Suicide Count Per Capita</h3>
     
-                    <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
+                    <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH/1.05} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
                     
                 </div>
                 
                 <div className='col-lg-6 text-center'>
                     <h3 className="chartTitle">Map Showing Total Suicide Counts</h3>
-                    <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
+                    <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH/1.05} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
                 </div>
             </div>
         </div>

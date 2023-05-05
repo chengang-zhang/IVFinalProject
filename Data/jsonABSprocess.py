@@ -70,7 +70,7 @@ for i in range(len(data_json['features'])):
                     data_json['features'][i]['properties'][year_for_json] = suicide_for_json 
                 if len(year_list_test) > 0:
                     for year in year_list_test:
-                        data_json['features'][i]['properties'][year] = -1 
+                        data_json['features'][i]['properties'][year] = -1
             else:  
                 for x in year_as_string:
                     data_json['features'][i]['properties'][x] = -1

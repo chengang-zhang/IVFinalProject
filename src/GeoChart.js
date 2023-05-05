@@ -66,7 +66,7 @@ function GeoChart({ data_map, property,width,height}) {
           feature &&
           feature.properties.name +
             ": " +
-            feature.properties[property].toLocaleString()
+            (feature.properties[property].toLocaleString() === '-1' ? "No Data" :  feature.properties[property].toLocaleString())
       )
       .attr("x", 10)
       .attr("y", 25);
