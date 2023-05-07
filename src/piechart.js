@@ -19,7 +19,7 @@ export function Piechart(props){
     console.log(labels)
 
     return (
-        <g transform={`translate(${outerRadius}, ${outerRadius})`}>
+        <g transform={`translate(${outerRadius}, ${outerRadius+25})`}>
             {pies.map((d, i) => {
                 const[x, y] = arcGenerator.centroid(d);
                 return (
@@ -35,7 +35,7 @@ export function Piechart(props){
                         {/* Step 4: Add a rectangle with the fill color */}
                         <rect x={0} y={-10} width={10} height={10} fill={colorScale(i)} />
                         {/* Step 5: Add a text label */}
-                        <text x={15} y={0} alignmentBaseline="middle">{label}</text>
+                        <text x={15} y={-5} alignmentBaseline="middle">{label}</text>
                     </g>
                 ))}
             </g>

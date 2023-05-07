@@ -1,6 +1,6 @@
 import React from "react";
 import { max } from 'd3';
-import { Scales } from "./scatter_scale";
+import { Scales } from "./scale";
 import { Points2 } from "./points_scatter2";
 import { XAxis, YAxis } from "./axes";
 

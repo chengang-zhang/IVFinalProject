@@ -41,7 +41,7 @@ export function HeatMap(props) {
             return '8px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedCountry === thisPoint) ? '15px' : '6px'  
+            return (selectedCountry === thisPoint) ? '14px' : '6px'  
         } 
     };
 
@@ -50,7 +50,25 @@ export function HeatMap(props) {
             return '10px'
         } else {
             // also check if in the same row / col with the selected point
-            return (selectedYear === thisPoint) ? '15px' : '10px'  
+            return (selectedYear === thisPoint) ? '16px' : '10px'  
+        } 
+    };
+
+    const color_year = (selectedYear,thisPoint) => {
+        if  (!selectedYear) {
+            return ''
+        } else {
+            // also check if in the same row / col with the selected point
+            return (selectedYear === thisPoint) ? '#800000' : ''  
+        } 
+    };
+
+    const color_country = (selectedYear,thisPoint) => {
+        if  (!selectedYear) {
+            return ''
+        } else {
+            // also check if in the same row / col with the selected point
+            return (selectedYear === thisPoint) ? '#800000' : ''  
         } 
     };
 
@@ -65,14 +83,14 @@ export function HeatMap(props) {
         }
         {year_lst.map(s => {
                         return <g key={s} transform={`translate(${xScale(s)+18},-8)rotate(40)`}>
-                        <text style={{textAnchor:'end',fontSize:fontsize_year(selectedYear,s)}}
+                        <text style={{textAnchor:'end',fontSize:fontsize_year(selectedYear,s),stroke:color_year(selectedYear,s)}}
                                 opacity={Opacity_year(selectedYear,s)}>
                                     {s}
                             </text>
                         </g>
                     })}
         {country_lst.map(c => {
-                    return <text key={c} style={{textAnchor:'end', fontSize:fontsize_country(selectedCountry,c)}} 
+                    return <text key={c} style={{textAnchor:'end', fontSize:fontsize_country(selectedCountry,c), stroke:color_country(selectedCountry,c)}} 
                     x={-5} y={yScale(c)+3} opacity={Opacity_country(selectedCountry,c)}>
                                 {c}
                             </text>

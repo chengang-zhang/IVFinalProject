@@ -17,17 +17,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'; //import bootstrap
 //const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/test.csv'
 const pieurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_generation.csv'
 const csvurl = 'https://raw.githubusercontent.com/chengang-zhang/IVFinalProject/main/Data/by_country.csv'
-const country_lst = ['Albania', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
+const country_lst = ['Albania', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 
 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'Colombia', 
 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Ecuador', 'El Salvador', 'Estonia',
 'Finland', 'France', 'Georgia', 'Germany', 'Greece', 'Grenada', 'Guatemala', 'Guyana', 'Hungary', 'Iceland', 'Ireland', 
 'Israel', 'Italy', 'Jamaica', 'Japan', 'Kazakhstan', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Latvia', 'Lithuania', 
 'Luxembourg', 'Macau', 'Maldives', 'Malta', 'Mauritius', 'Mexico', 'Montenegro', 'Netherlands', 'New Zealand', 
 'Nicaragua', 'Norway', 'Panama', 'Paraguay', 'Philippines', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 
-'Republic of Korea', 'Romania', 'Russian Federation', 'Saint Lucia', 'Saint Vincent and Grenadines', 
-'San Marino', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sri Lanka', 'Suriname', 
-'Sweden', 'Switzerland', 'Thailand', 'Trinidad and Tobago', 'Turkey', 'Turkmenistan', 'Ukraine', 'United Arab Emirates', 
-'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan']
+'Republic of Korea', 'Romania', 'Russian Federation', 'Saint Lucia', 'San Marino', 'Singapore', 'Slovakia', 'Slovenia', 
+'South Africa', 'Spain', 'Sri Lanka', 'Suriname', 'Sweden', 'Switzerland', 'Thailand', 'Trinidad and Tobago', 
+'Turkey', 'Turkmenistan', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan']
 const year_lst = [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]
 // const year_lst = ['1991','1992','1993','1994','1995','1996','1997','1998','1999','2000','2001','2002','2003','2004','2005','2006','2007','2008','2009','2010']
 
@@ -66,7 +65,7 @@ function Suicide(){
     const year_lst = [1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010]
 
 
-    const heatmap_margin = {top: 40, right: 160, bottom: 50, left: 140};
+    const heatmap_margin = {top: 40, right: 40, bottom: 40, left: 150};
     const heatmap_height = HEIGHT - heatmap_margin.top - heatmap_margin.bottom;
     const heatmap_width = WIDTH - heatmap_margin.left - heatmap_margin.right;
 
@@ -137,12 +136,12 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-            <div className="container-sm col-3 text-center">
+            <div className="container-sm col-2 text-center">
             <input key="slider" className="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
             </div>
         </div>
         <div className='row'>
-            <div className='col-lg-7 text-center'>
+            <div className='col-lg-6 text-center'>
                 <h3 className="chartTitle" >Heat Map Showing Suicide Per Capita</h3>
                 <svg width={WIDTH*1.2} height={HEIGHT}>
                     <g>
@@ -156,11 +155,11 @@ function Suicide(){
             {/* <div className='col-lg-1'>
 
             </div> */}
-            <div className='col-lg-5 text-center'>
+            <div className='col-lg-6 text-center'>
                 <h3 className="chartTitle">Donut Chart Showing Generations</h3>
-                <svg width={WIDTH} height={HEIGHT}>
+                <svg width={WIDTH*0.55} height={HEIGHT}>
                     <g>
-                        <Piechart data={transposedData} innerRadius={100} outerRadius={HEIGHT-300} />
+                        <Piechart data={transposedData} innerRadius={80} outerRadius={HEIGHT-320} />
                     </g>
                 </svg>
             </div>
@@ -170,7 +169,7 @@ function Suicide(){
                 <h3 className="chartTitle">Suicide Per Capita vs GDP Per Capita</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                    <ScatterPlot1 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height-20} width={heatmap_width-20}
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                         setLeft={setLeft} setTop={setTop}
                     />
@@ -181,7 +180,7 @@ function Suicide(){
                 <h3 className="chartTitle">Suicide Count vs Absolute GDP</h3>
                 <svg width={WIDTH} height={HEIGHT}>
                     <g>
-                    <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height} width={heatmap_width}
+                    <ScatterPlot2 data={data} offsetX={heatmap_margin.left} offsetY={heatmap_margin.top} height={heatmap_height-20} width={heatmap_width-20}
                         selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}
                         setLeft={setLeft} setTop={setTop}
                     />
@@ -200,7 +199,7 @@ function Suicide(){
             </div>
         </div>
         <div className='row'>
-            <div className="container-sm col-3 text-center">
+            <div className="container-sm col-2 text-center">
             <input key="slider" className="form-range text-center" id="customRange1" type='range' min='0' max='19' value={year} step='1' onChange={changeHandler}/>
             </div>
         </div>
@@ -213,11 +212,8 @@ function Suicide(){
             
                 <div className='col-lg-6 text-center'>
                     <h3 className="chartTitle">Map Showing Suicide Count Per Capita</h3>
-    
                     <GeoChart data_map={data_map} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH/1.05} selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry}/>
-                    
                 </div>
-                
                 <div className='col-lg-6 text-center'>
                     <h3 className="chartTitle">Map Showing Total Suicide Counts</h3>
                     <GeoChart data_map={data_map_abs} property={year_lst[year]} height={HEIGHT/1.05} width={WIDTH/1.05} selectedCountry1={selectedCountry} setSelectedCountry1={setSelectedCountry}/>   
