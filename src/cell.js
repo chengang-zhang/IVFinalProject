@@ -4,7 +4,7 @@ export function Cell(props){
     const { d, xScale, yScale, color, selectedCountry, setSelectedCountry, selectedYear, setSelectedYear, setYear} = props;
     
     const getOpacity = (selectedCountry, thisPoint) => {
-        if  (!selectedCountry) {
+        if  ((!selectedCountry) && (!selectedYear)) {
             return 1
         } else {
             return (selectedCountry === thisPoint.country) ? 1 : 0.3
@@ -30,6 +30,7 @@ export function Cell(props){
         setSelectedYear(null)
     };
     
+    console.log(selectedCountry)
     return <g transform={`translate(${xScale(d.year)}, ${yScale(d.country)})`}>
         <rect width={xScale.bandwidth()} height={yScale.bandwidth()} fill={color} stroke={"black"}
         strokeWidth={getStrokeWidth(selectedCountry, d)}
